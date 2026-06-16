@@ -5,7 +5,6 @@ import lombok.*;
 
 import java.math.BigDecimal;
 
-/** Fila del reporte "Estado de Cuenta", con las claves del ejemplo de la prueba. */
 @Getter
 @Setter
 @NoArgsConstructor

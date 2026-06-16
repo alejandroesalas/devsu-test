@@ -19,7 +19,6 @@ public class Cliente extends Persona {
     @Column(name = "cliente_id", nullable = false, unique = true)
     private String clienteId;
 
-    /** Contraseña almacenada cifrada (BCrypt). */
     @Column(nullable = false)
     private String contrasena;
 

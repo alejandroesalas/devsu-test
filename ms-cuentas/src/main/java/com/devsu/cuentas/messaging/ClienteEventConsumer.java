@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * Escucha los eventos de Cliente y mantiene actualizado el read-model local
- * (ClienteView). Es la comunicación ASÍNCRONA entre los dos microservicios.
+ * (ClienteView).
  */
 @Slf4j
 @Component

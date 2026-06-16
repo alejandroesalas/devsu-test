@@ -5,10 +5,6 @@ import lombok.*;
 
 import java.math.BigDecimal;
 
-/**
- * El valor puede ser positivo (depósito) o negativo (retiro).
- * No puede ser cero.
- */
 @Getter
 @Setter
 @NoArgsConstructor

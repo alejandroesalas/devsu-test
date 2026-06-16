@@ -11,7 +11,7 @@ import java.time.LocalDate;
 
 /**
  * F4 - Reporte "Estado de Cuenta" por rango de fechas y cliente.
- * Ejemplo: GET /reportes?clienteId=jlema&fechaInicio=2022-02-01&fechaFin=2022-02-28
+ * Ejemplo: GET /reportes?clienteId=jlema&fechaInicio=2026-02-01&fechaFin=2026-02-28
  */
 @RestController
 @RequestMapping("/reportes")
