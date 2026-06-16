@@ -6,7 +6,7 @@ import lombok.experimental.SuperBuilder;
 
 /**
  * Cliente hereda de Persona (herencia JOINED). Posee su propia clave de negocio
- * (clienteId), única, usada como identificador público en la API.
+ * (clienteId), única.
  */
 @Entity
 @Table(name = "clientes")
