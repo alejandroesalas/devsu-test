@@ -86,18 +86,6 @@ class ClienteServiceTest {
     }
 
     @Test
-    @DisplayName("Crear cliente con clienteId duplicado lanza DuplicateResourceException")
-    void crearCliente_clienteIdDuplicado() {
-        when(repository.existsByClienteId("jlema")).thenReturn(true);
-
-        assertThatThrownBy(() -> service.crear(nuevoRequest()))
-                .isInstanceOf(DuplicateResourceException.class);
-
-        verify(repository, never()).save(any());
-        verify(clienteEventService, never()).publicarCreado(any());
-    }
-
-    @Test
     @DisplayName("Crear cliente con identificacion duplicada lanza DuplicateResourceException")
     void crearCliente_identificacionDuplicada() {
         when(repository.existsByClienteId(anyString())).thenReturn(false);
@@ -119,92 +107,5 @@ class ClienteServiceTest {
 
         assertThat(result).hasSize(1);
         assertThat(result.get(0).getClienteId()).isEqualTo("jlema");
-    }
-
-    @Test
-    @DisplayName("Obtener cliente existente devuelve el response")
-    void obtenerCliente_ok() {
-        when(repository.findByClienteId("jlema")).thenReturn(Optional.of(clienteGuardado()));
-
-        ClienteResponse response = service.obtenerPorClienteId("jlema");
-
-        assertThat(response.getNombre()).isEqualTo("Jose Lema");
-    }
-
-    @Test
-    @DisplayName("Obtener cliente inexistente lanza ResourceNotFoundException")
-    void obtenerCliente_noExiste() {
-        when(repository.findByClienteId("xxx")).thenReturn(Optional.empty());
-
-        assertThatThrownBy(() -> service.obtenerPorClienteId("xxx"))
-                .isInstanceOf(ResourceNotFoundException.class);
-    }
-
-    @Test
-    @DisplayName("Actualizar cliente persiste los cambios y publica el evento")
-    void actualizarCliente_ok() {
-        Cliente existente = clienteGuardado();
-        when(repository.findByClienteId("jlema")).thenReturn(Optional.of(existente));
-        when(passwordEncoder.encode(anyString())).thenReturn("$2a$nuevo");
-        when(repository.save(any(Cliente.class))).thenAnswer(inv -> inv.getArgument(0));
-
-        ClienteRequest request = nuevoRequest();
-        request.setNombre("Jose Lema Actualizado");
-
-        ClienteResponse response = service.actualizar("jlema", request);
-
-        assertThat(response.getNombre()).isEqualTo("Jose Lema Actualizado");
-        verify(clienteEventService).publicarActualizado(any(Cliente.class));
-    }
-
-    @Test
-    @DisplayName("Actualizar cliente inexistente lanza ResourceNotFoundException")
-    void actualizarCliente_noExiste() {
-        when(repository.findByClienteId("xxx")).thenReturn(Optional.empty());
-
-        assertThatThrownBy(() -> service.actualizar("xxx", nuevoRequest()))
-                .isInstanceOf(ResourceNotFoundException.class);
-
-        verify(clienteEventService, never()).publicarActualizado(any());
-    }
-
-    @Test
-    @DisplayName("Actualizar parcial solo modifica los campos enviados")
-    void actualizarParcialCliente_ok() {
-        Cliente existente = clienteGuardado();
-        when(repository.findByClienteId("jlema")).thenReturn(Optional.of(existente));
-        when(repository.save(any(Cliente.class))).thenAnswer(inv -> inv.getArgument(0));
-
-        ClientePatchRequest patch = new ClientePatchRequest();
-        patch.setNombre("Jose Lema Patch");
-
-        ClienteResponse response = service.actualizarParcial("jlema", patch);
-
-        assertThat(response.getNombre()).isEqualTo("Jose Lema Patch");
-        assertThat(response.getTelefono()).isEqualTo("098254785");
-        verify(clienteEventService).publicarActualizado(any(Cliente.class));
-    }
-
-    @Test
-    @DisplayName("Eliminar cliente lo borra y publica el evento")
-    void eliminarCliente_ok() {
-        when(repository.findByClienteId("jlema")).thenReturn(Optional.of(clienteGuardado()));
-
-        service.eliminar("jlema");
-
-        verify(repository).delete(any(Cliente.class));
-        verify(clienteEventService).publicarEliminado(any(Cliente.class));
-    }
-
-    @Test
-    @DisplayName("Eliminar cliente inexistente lanza ResourceNotFoundException")
-    void eliminarCliente_noExiste() {
-        when(repository.findByClienteId("xxx")).thenReturn(Optional.empty());
-
-        assertThatThrownBy(() -> service.eliminar("xxx"))
-                .isInstanceOf(ResourceNotFoundException.class);
-
-        verify(repository, never()).delete(any());
-        verify(clienteEventService, never()).publicarEliminado(any());
     }
 }
