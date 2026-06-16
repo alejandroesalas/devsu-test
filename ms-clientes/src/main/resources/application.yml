@@ -30,9 +30,9 @@ app:
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
-    enabled: ${SWAGGER_ENABLED}  # prod: false
+    enabled: ${SWAGGER_ENABLED:true}  # prod: false
   api-docs:
-    enabled: ${SWAGGER_ENABLED}  # prod: false
+    enabled: ${SWAGGER_ENABLED:true}  # prod: false
 
 logging:
   level:
