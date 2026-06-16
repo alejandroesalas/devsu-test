@@ -4,7 +4,7 @@ import lombok.*;
 
 import java.io.Serializable;
 
-/** Evento publicado a RabbitMQ cuando un Cliente cambia. */
+/** Evento publicado cuando un Cliente cambia. */
 @Getter
 @Setter
 @NoArgsConstructor
