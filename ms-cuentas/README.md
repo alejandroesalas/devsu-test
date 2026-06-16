@@ -9,7 +9,7 @@ Consume eventos de clientes desde RabbitMQ (`cuentas.cliente.queue`) para manten
 Desde la raíz del proyecto:
 
 ```bash
-podman compose up --build
+docker compose up --build
 ```
 
 > Para el flujo completo hay que levantar ambos servicios, ya que `ms-cuentas` necesita recibir el evento de creación del cliente antes de poder asociarle una cuenta.

@@ -7,7 +7,7 @@ Microservicio de clientes. Puerto **8081**, base de datos `clientes_db`.
 Desde la raíz del proyecto:
 
 ```bash
-podman compose up --build ms-clientes
+docker compose up --build ms-clientes
 ```
 
 O standalone (requiere Postgres y RabbitMQ corriendo):
