@@ -9,7 +9,7 @@ Consume eventos de clientes desde RabbitMQ (`cuentas.cliente.queue`) para manten
 Desde la raíz del proyecto:
 
 ```bash
-docker-compose up --build
+podman compose up --build
 ```
 
 > Para el flujo completo hay que levantar ambos servicios, ya que `ms-cuentas` necesita recibir el evento de creación del cliente antes de poder asociarle una cuenta.
@@ -42,5 +42,5 @@ Corre con H2 en memoria (sin Docker ni RabbitMQ).
 
 ## Base de datos
 
-El esquema y datos de ejemplo están en [`BaseDatos.sql`](BaseDatos.sql).  
-En ejecución las tablas las crea JPA automáticamente.
+El esquema y datos de ejemplo se encuentran en [`infra/init-db.sql`](../infra/init-db.sql) en la raíz del proyecto.  
+Al levantar Docker, Postgres ejecuta ese script automáticamente — las tablas y datos quedan listos sin intervención manual.

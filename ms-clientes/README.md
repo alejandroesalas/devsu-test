@@ -7,7 +7,7 @@ Microservicio de clientes. Puerto **8081**, base de datos `clientes_db`.
 Desde la raíz del proyecto:
 
 ```bash
-docker-compose up --build ms-clientes
+podman compose up --build ms-clientes
 ```
 
 O standalone (requiere Postgres y RabbitMQ corriendo):
@@ -39,5 +39,5 @@ Corre con H2 en memoria (sin Docker ni RabbitMQ).
 
 ## Base de datos
 
-El esquema y datos de ejemplo están en [`BaseDatos.sql`](BaseDatos.sql).  
-En ejecución las tablas las crea JPA automáticamente.
+El esquema y datos de ejemplo se encuentran en [`infra/init-db.sql`](../infra/init-db.sql) en la raíz del proyecto.  
+Al levantar Docker, Postgres ejecuta ese script automáticamente — las tablas y datos quedan listos sin intervención manual.
