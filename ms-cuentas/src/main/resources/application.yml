@@ -11,7 +11,7 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: update  # prod: validate | none
+      ddl-auto: none
     properties:
       hibernate:
         format_sql: true  # prod: false
