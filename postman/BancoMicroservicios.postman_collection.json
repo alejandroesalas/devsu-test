@@ -1,0 +1,532 @@
+{
+  "info": {
+    "name": "Banco Microservicios - Prueba Técnica",
+    "description": "Colección de validación de endpoints (F1-F4) y casos de uso de la prueba.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Clientes",
+      "item": [
+        {
+          "name": "Crear cliente",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseClientes}}/clientes",
+              "host": ["{{baseClientes}}"],
+              "path": ["clientes"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Ana Perez\",\n  \"genero\": \"Femenino\",\n  \"edad\": 28,\n  \"identificacion\": \"0203040506\",\n  \"direccion\": \"Av. Amazonas 123\",\n  \"telefono\": \"099111222\",\n  \"clienteId\": \"aperez\",\n  \"contrasena\": \"pass01\",\n  \"estado\": true\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar clientes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseClientes}}/clientes",
+              "host": ["{{baseClientes}}"],
+              "path": ["clientes"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener cliente",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseClientes}}/clientes/aperez",
+              "host": ["{{baseClientes}}"],
+              "path": ["clientes", "aperez"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar cliente",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseClientes}}/clientes/aperez",
+              "host": ["{{baseClientes}}"],
+              "path": ["clientes", "aperez"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Ana Perez\",\n  \"genero\": \"Femenino\",\n  \"edad\": 29,\n  \"identificacion\": \"0203040506\",\n  \"direccion\": \"Av. Amazonas 456\",\n  \"telefono\": \"099111222\",\n  \"clienteId\": \"aperez\",\n  \"contrasena\": \"pass01\",\n  \"estado\": true\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar estado",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseClientes}}/clientes/aperez",
+              "host": ["{{baseClientes}}"],
+              "path": ["clientes", "aperez"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"estado\": false\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar cliente",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseClientes}}/clientes/lmartinez",
+              "host": ["{{baseClientes}}"],
+              "path": ["clientes", "lmartinez"]
+            },
+            "description": "Elimina un cliente. No ejecutar dentro del flujo de Casos de Uso."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "2. Cuentas",
+      "item": [
+        {
+          "name": "Crear cuenta",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseCuentas}}/cuentas",
+              "host": ["{{baseCuentas}}"],
+              "path": ["cuentas"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"numeroCuenta\": \"100001\",\n  \"tipoCuenta\": \"AHORROS\",\n  \"saldoInicial\": 1500,\n  \"estado\": true,\n  \"clienteId\": \"aperez\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar cuentas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseCuentas}}/cuentas",
+              "host": ["{{baseCuentas}}"],
+              "path": ["cuentas"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener cuenta",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseCuentas}}/cuentas/100001",
+              "host": ["{{baseCuentas}}"],
+              "path": ["cuentas", "100001"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar cuenta",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseCuentas}}/cuentas/100001",
+              "host": ["{{baseCuentas}}"],
+              "path": ["cuentas", "100001"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"numeroCuenta\": \"100001\",\n  \"tipoCuenta\": \"AHORROS\",\n  \"saldoInicial\": 1500,\n  \"estado\": true,\n  \"clienteId\": \"aperez\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar estado cuenta",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseCuentas}}/cuentas/100001",
+              "host": ["{{baseCuentas}}"],
+              "path": ["cuentas", "100001"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"estado\": true\n}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "3. Movimientos",
+      "item": [
+        {
+          "name": "Deposito (POST, valor +)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseCuentas}}/movimientos",
+              "host": ["{{baseCuentas}}"],
+              "path": ["movimientos"]
+            },
+            "description": "F2: valor positivo = deposito. Actualiza el saldo disponible.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"numeroCuenta\": \"100002\",\n  \"valor\": 200\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Retiro (POST, valor -)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseCuentas}}/movimientos",
+              "host": ["{{baseCuentas}}"],
+              "path": ["movimientos"]
+            },
+            "description": "F2: valor negativo = retiro.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"numeroCuenta\": \"100001\",\n  \"valor\": -300\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Retiro sin saldo -> 'Saldo no disponible'",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseCuentas}}/movimientos",
+              "host": ["{{baseCuentas}}"],
+              "path": ["movimientos"]
+            },
+            "description": "F3: debe responder 400 con el mensaje 'Saldo no disponible'.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"numeroCuenta\": \"100003\",\n  \"valor\": -9999\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar movimientos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseCuentas}}/movimientos",
+              "host": ["{{baseCuentas}}"],
+              "path": ["movimientos"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "4. Reportes (Estado de Cuenta)",
+      "item": [
+        {
+          "name": "Estado de cuenta por cliente y rango",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseCuentas}}/reportes?clienteId=rgarcia&fechaInicio=2020-01-01&fechaFin=2030-12-31",
+              "host": ["{{baseCuentas}}"],
+              "path": ["reportes"],
+              "query": [
+                { "key": "clienteId", "value": "rgarcia" },
+                { "key": "fechaInicio", "value": "2020-01-01" },
+                { "key": "fechaFin", "value": "2030-12-31" }
+              ]
+            },
+            "description": "F4: reporte en JSON con cuentas, saldos y detalle de movimientos."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "5. Casos de Uso",
+      "item": [
+        {
+          "name": "Crear cliente Ana Perez",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseClientes}}/clientes",
+              "host": ["{{baseClientes}}"],
+              "path": ["clientes"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Ana Perez\",\n  \"genero\": \"Femenino\",\n  \"edad\": 28,\n  \"identificacion\": \"0203040506\",\n  \"direccion\": \"Av. Amazonas 123\",\n  \"telefono\": \"099111222\",\n  \"clienteId\": \"aperez\",\n  \"contrasena\": \"pass01\",\n  \"estado\": true\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear cliente Roberto Garcia",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseClientes}}/clientes",
+              "host": ["{{baseClientes}}"],
+              "path": ["clientes"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Roberto Garcia\",\n  \"genero\": \"Masculino\",\n  \"edad\": 45,\n  \"identificacion\": \"0203040507\",\n  \"direccion\": \"Av. 6 de Diciembre 456\",\n  \"telefono\": \"099333444\",\n  \"clienteId\": \"rgarcia\",\n  \"contrasena\": \"pass02\",\n  \"estado\": true\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear cliente Laura Martinez",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseClientes}}/clientes",
+              "host": ["{{baseClientes}}"],
+              "path": ["clientes"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Laura Martinez\",\n  \"genero\": \"Femenino\",\n  \"edad\": 33,\n  \"identificacion\": \"0203040508\",\n  \"direccion\": \"Av. Shyris 789\",\n  \"telefono\": \"099555666\",\n  \"clienteId\": \"lmartinez\",\n  \"contrasena\": \"pass03\",\n  \"estado\": true\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear cuenta 100001 (aperez - AHORROS)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseCuentas}}/cuentas",
+              "host": ["{{baseCuentas}}"],
+              "path": ["cuentas"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"numeroCuenta\": \"100001\",\n  \"tipoCuenta\": \"AHORROS\",\n  \"saldoInicial\": 1500,\n  \"estado\": true,\n  \"clienteId\": \"aperez\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear cuenta 100002 (rgarcia - CORRIENTE)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseCuentas}}/cuentas",
+              "host": ["{{baseCuentas}}"],
+              "path": ["cuentas"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"numeroCuenta\": \"100002\",\n  \"tipoCuenta\": \"CORRIENTE\",\n  \"saldoInicial\": 500,\n  \"estado\": true,\n  \"clienteId\": \"rgarcia\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear cuenta 100003 (lmartinez - AHORROS)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseCuentas}}/cuentas",
+              "host": ["{{baseCuentas}}"],
+              "path": ["cuentas"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"numeroCuenta\": \"100003\",\n  \"tipoCuenta\": \"AHORROS\",\n  \"saldoInicial\": 0,\n  \"estado\": true,\n  \"clienteId\": \"lmartinez\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear cuenta 100004 (rgarcia - AHORROS)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseCuentas}}/cuentas",
+              "host": ["{{baseCuentas}}"],
+              "path": ["cuentas"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"numeroCuenta\": \"100004\",\n  \"tipoCuenta\": \"AHORROS\",\n  \"saldoInicial\": 800,\n  \"estado\": true,\n  \"clienteId\": \"rgarcia\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear cuenta 100005 (aperez - CORRIENTE)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseCuentas}}/cuentas",
+              "host": ["{{baseCuentas}}"],
+              "path": ["cuentas"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"numeroCuenta\": \"100005\",\n  \"tipoCuenta\": \"CORRIENTE\",\n  \"saldoInicial\": 2000,\n  \"estado\": true,\n  \"clienteId\": \"aperez\"\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Retiro de 300 (100001 - aperez)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseCuentas}}/movimientos",
+              "host": ["{{baseCuentas}}"],
+              "path": ["movimientos"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"numeroCuenta\": \"100001\",\n  \"valor\": -300\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deposito de 200 (100002 - rgarcia)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseCuentas}}/movimientos",
+              "host": ["{{baseCuentas}}"],
+              "path": ["movimientos"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"numeroCuenta\": \"100002\",\n  \"valor\": 200\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deposito de 100 (100003 - lmartinez)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseCuentas}}/movimientos",
+              "host": ["{{baseCuentas}}"],
+              "path": ["movimientos"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"numeroCuenta\": \"100003\",\n  \"valor\": 100\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Retiro de 800 (100004 - rgarcia)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseCuentas}}/movimientos",
+              "host": ["{{baseCuentas}}"],
+              "path": ["movimientos"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"numeroCuenta\": \"100004\",\n  \"valor\": -800\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Saldo no disponible (100003 - lmartinez) F3",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseCuentas}}/movimientos",
+              "host": ["{{baseCuentas}}"],
+              "path": ["movimientos"]
+            },
+            "description": "F3: luego del deposito de 100, intentar retirar 9999. Debe responder 400 'Saldo no disponible'.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"numeroCuenta\": \"100003\",\n  \"valor\": -9999\n}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Reporte estado de cuenta (rgarcia)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseCuentas}}/reportes?clienteId=rgarcia&fechaInicio=2020-01-01&fechaFin=2030-12-31",
+              "host": ["{{baseCuentas}}"],
+              "path": ["reportes"],
+              "query": [
+                { "key": "clienteId", "value": "rgarcia" },
+                { "key": "fechaInicio", "value": "2020-01-01" },
+                { "key": "fechaFin", "value": "2030-12-31" }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    { "key": "baseClientes", "value": "http://localhost:8081" },
+    { "key": "baseCuentas", "value": "http://localhost:8082" }
+  ]
+}

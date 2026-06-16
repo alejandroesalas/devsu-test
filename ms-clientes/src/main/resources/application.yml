@@ -1,0 +1,39 @@
+server:
+  port: ${SERVER_PORT:8081}
+
+spring:
+  application:
+    name: ms-clientes
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/clientes_db}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: true  # prod: false
+    show-sql: true
+    open-in-view: false
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USER}
+    password: ${RABBITMQ_PASSWORD}
+
+app:
+  messaging:
+    exchange: clientes.exchange
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: ${SWAGGER_ENABLED:true}  # prod: false
+  api-docs:
+    enabled: ${SWAGGER_ENABLED:true}  # prod: false
+
+logging:
+  level:
+    com.devsu: INFO

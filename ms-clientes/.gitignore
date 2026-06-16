@@ -1,0 +1,5 @@
+/.idea
+/target
+
+# Variables de entorno (contiene credenciales)
+.env

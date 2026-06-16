@@ -1,0 +1,41 @@
+server:
+  port: ${SERVER_PORT:8082}
+
+spring:
+  application:
+    name: ms-cuentas
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/cuentas_db}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: true  # prod: false
+    show-sql: false
+    open-in-view: false
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USER}
+    password: ${RABBITMQ_PASSWORD}
+
+app:
+  messaging:
+    exchange: clientes.exchange
+    queue: cuentas.cliente.queue
+    routing-key: cliente.#
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: ${SWAGGER_ENABLED:true}  # prod: false
+  api-docs:
+    enabled: ${SWAGGER_ENABLED:true}  # prod: false
+
+logging:
+  level:
+    com.devsu: INFO
