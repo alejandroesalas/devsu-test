@@ -1,9 +1,4 @@
 -- clientes_db — esquema y datos de ejemplo
--- Las tablas se crean automáticamente vía JPA; este script sirve como referencia
--- y para poblar datos manualmente si se desea.
---
--- Si se cargan estos datos, NO ejecutar los casos 1 de Postman (se duplicarían).
-
 \connect clientes_db
 
 CREATE TABLE IF NOT EXISTS personas (
